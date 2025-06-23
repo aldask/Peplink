@@ -1,7 +1,12 @@
+import { Routes, Route } from "react-router-dom";
+import UsersPage from "./pages/UsersPage";
+
 function App() {
   return (
     <>
-      <h1>Magic will happen here real soon</h1>
+      <Routes>
+        <Route path="/" element={<UsersPage />} />
+      </Routes>
     </>
   );
 }
