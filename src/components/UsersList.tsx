@@ -7,10 +7,6 @@ interface UsersListProps {
 }
 
 const UsersList = ({ users, onDeleteUser }: UsersListProps) => {
-  const handleEditUser = (id: number) => {
-    console.log("Edit user", id);
-  };
-
   return (
     <section className="max-w-5xl mx-auto px-4 py-12">
       <h1 className="text-4xl font-bold text-neutral-800 mb-10 text-center">
@@ -31,7 +27,6 @@ const UsersList = ({ users, onDeleteUser }: UsersListProps) => {
               key={user.id}
               user={user}
               onDelete={() => onDeleteUser(user.id)}
-              onEdit={() => handleEditUser(user.id)}
             />
           ))}
         </div>
