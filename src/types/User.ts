@@ -7,3 +7,9 @@ export interface User {
   role: string;
   email: string;
 }
+
+export interface UserCardProps {
+  user: User;
+  onDelete: (id: number) => void;
+  onEdit: (id: number) => void;
+}
