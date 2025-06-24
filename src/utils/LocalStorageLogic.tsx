@@ -14,3 +14,9 @@ export function addUserToLocalStorage(user: User[]): void {
   users.push(...user);
   localStorage.setItem("users", JSON.stringify(users));
 }
+
+export function deleteUserFromLocalStorage(id: number): void {
+  const users = getUsersFromLocalStorage();
+  const updatedUsers = users.filter((user) => user.id !== id);
+  localStorage.setItem("users", JSON.stringify(updatedUsers));
+}

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import {
   addUserToLocalStorage,
+  deleteUserFromLocalStorage,
   getUsersFromLocalStorage,
 } from "../utils/LocalStorageLogic";
 import { InitialUsers } from "../utils/InitialUsers";
@@ -20,11 +21,17 @@ const UsersList = () => {
     }
   }, []);
 
+  const handleDeleteUser = (id: number) => {
+    deleteUserFromLocalStorage(id);
+    setUsers(getUsersFromLocalStorage());
+  };
+
   return (
     <div>
       {users.map((user) => (
         <div key={user.id}>
           <p>{user.f_name}</p>
+          <button onClick={() => handleDeleteUser(user.id)}>Delete</button>
         </div>
       ))}
     </div>
