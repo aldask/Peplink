@@ -1,31 +1,12 @@
-import { useState, useEffect } from "react";
-import {
-  addUserToLocalStorage,
-  deleteUserFromLocalStorage,
-  getUsersFromLocalStorage,
-} from "../utils/LocalStorageLogic";
-import { InitialUsers } from "../utils/InitialUsers";
 import type { User } from "../types/User";
 import UserCard from "./UserCard";
 
-const UsersList = () => {
-  const [users, setUsers] = useState<User[]>([]);
+interface UsersListProps {
+  users: User[];
+  onDeleteUser: (id: number) => void;
+}
 
-  useEffect(() => {
-    const storedUsers = getUsersFromLocalStorage();
-    if (storedUsers.length === 0) {
-      addUserToLocalStorage(InitialUsers);
-      setUsers(InitialUsers);
-    } else {
-      setUsers(storedUsers);
-    }
-  }, []);
-
-  const handleDeleteUser = (id: number) => {
-    deleteUserFromLocalStorage(id);
-    setUsers(getUsersFromLocalStorage());
-  };
-
+const UsersList = ({ users, onDeleteUser }: UsersListProps) => {
   const handleEditUser = (id: number) => {
     console.log("Edit user", id);
   };
@@ -49,8 +30,8 @@ const UsersList = () => {
             <UserCard
               key={user.id}
               user={user}
-              onDelete={handleDeleteUser}
-              onEdit={handleEditUser}
+              onDelete={() => onDeleteUser(user.id)}
+              onEdit={() => handleEditUser(user.id)}
             />
           ))}
         </div>

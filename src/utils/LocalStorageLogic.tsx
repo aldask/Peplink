@@ -5,7 +5,6 @@ export function getUsersFromLocalStorage(): User[] {
   if (users) {
     return JSON.parse(users);
   }
-  console.log("No users in the storage");
   return [];
 }
 

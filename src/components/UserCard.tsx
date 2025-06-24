@@ -1,6 +1,6 @@
 import type { UserCardProps } from "../types/User";
 
-const UserCard = ({ user, onDelete, onEdit }: UserCardProps) => {
+const UserCard = ({ user, onDelete }: UserCardProps) => {
   return (
     <div className="bg-neutral-50 border border-neutral-200 rounded-xl shadow-sm p-6 flex flex-col justify-between transition duration-200 hover:scale-[1.01] hover:shadow-md">
       <div>
@@ -16,12 +16,12 @@ const UserCard = ({ user, onDelete, onEdit }: UserCardProps) => {
       </div>
 
       <div className="mt-5 flex gap-2">
-        <button
+        {/* <button
           onClick={() => onEdit(user.id)}
           className="px-4 py-1.5 text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 rounded-lg transition"
         >
           Edit
-        </button>
+        </button> */}
         <button
           onClick={() => onDelete(user.id)}
           className="px-4 py-1.5 text-sm font-medium text-white bg-neutral-700 hover:bg-neutral-800 rounded-lg transition"
