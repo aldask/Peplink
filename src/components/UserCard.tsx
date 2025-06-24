@@ -2,29 +2,29 @@ import type { UserCardProps } from "../types/User";
 
 const UserCard = ({ user, onDelete, onEdit }: UserCardProps) => {
   return (
-    <div className="bg-white border border-gray-200 rounded-2xl shadow-md p-6 flex flex-col justify-between transition hover:shadow-lg">
+    <div className="bg-neutral-50 border border-neutral-200 rounded-xl shadow-sm p-6 flex flex-col justify-between transition duration-200 hover:scale-[1.01] hover:shadow-md">
       <div>
-        <h2 className="text-xl font-semibold text-gray-800 mb-1">
+        <h2 className="text-lg font-semibold text-neutral-800">
           {user.f_name}
         </h2>
-        <p className="text-sm text-gray-600 mb-1">
+        <p className="text-sm text-neutral-600">
           {user.gender} • {user.age} y/o
         </p>
-        <span className="inline-block mt-2 text-xs font-medium bg-orange-100 text-orange-600 px-3 py-1 rounded-full">
+        <span className="inline-block mt-2 text-xs font-medium bg-amber-100 text-amber-700 px-3 py-1 rounded-full">
           {user.role}
         </span>
       </div>
 
-      <div className="mt-4 flex gap-2">
+      <div className="mt-5 flex gap-2">
         <button
           onClick={() => onEdit(user.id)}
-          className="px-4 py-1.5 text-sm font-medium bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition"
+          className="px-4 py-1.5 text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 rounded-lg transition"
         >
           Edit
         </button>
         <button
           onClick={() => onDelete(user.id)}
-          className="px-4 py-1.5 text-sm font-medium bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+          className="px-4 py-1.5 text-sm font-medium text-white bg-neutral-700 hover:bg-neutral-800 rounded-lg transition"
         >
           Delete
         </button>
