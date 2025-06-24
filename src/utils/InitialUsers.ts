@@ -2,7 +2,7 @@ import type { User } from "../types/User";
 
 export const InitialUsers: User[] = [
   {
-    id: "1",
+    id: 0,
     f_name: "Jonas",
     l_name: "Donas",
     email: "jonas.donas@mail.com",
@@ -11,7 +11,7 @@ export const InitialUsers: User[] = [
     role: "Accountant",
   },
   {
-    id: "2",
+    id: 1,
     f_name: "Janė",
     l_name: "Janauske",
     email: "jane.janauske@mail.com",
@@ -20,7 +20,7 @@ export const InitialUsers: User[] = [
     role: "Manager",
   },
   {
-    id: "3",
+    id: 2,
     f_name: "Tomas",
     l_name: "Komas",
     email: "tomas.komas@mail.com",
