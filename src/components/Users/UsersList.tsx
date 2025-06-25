@@ -1,10 +1,5 @@
-import type { User } from "../types/User";
+import type { UsersListProps } from "../../types/User";
 import UserCard from "./UserCard";
-
-interface UsersListProps {
-  users: User[];
-  onDeleteUser: (id: number) => void;
-}
 
 const UsersList = ({ users, onDeleteUser }: UsersListProps) => {
   return (
@@ -12,7 +7,6 @@ const UsersList = ({ users, onDeleteUser }: UsersListProps) => {
       <h1 className="text-4xl font-bold text-neutral-800 mb-10 text-center">
         User Profiles
       </h1>
-
       {users.length === 0 ? (
         <div className="text-center mt-24 text-neutral-500">
           <p className="text-xl font-medium">No users found</p>

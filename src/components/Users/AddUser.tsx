@@ -1,7 +1,8 @@
 import { useState } from "react";
-import FormInput from "./FormInput";
-import FormSelect from "./FormSelect";
-import type { User, AddUserProps } from "../types/User";
+import FormInput from "../Forms_Buttons/FormInput";
+import FormSelect from "../Forms_Buttons/FormSelect";
+import type { User, AddUserProps } from "../../types/User";
+import Button from "../Forms_Buttons/Button";
 
 const AddUser = ({ onAddUser }: AddUserProps) => {
   const [newUserForm, setNewUserForm] = useState({
@@ -45,12 +46,15 @@ const AddUser = ({ onAddUser }: AddUserProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <h2 className="text-2xl font-bold text-gray-800 border-b pb-2">
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-6 sm:space-y-8 text-sm sm:text-base"
+    >
+      <h2 className="text-xl sm:text-2xl font-bold text-gray-800 border-b pb-2">
         Add New User
       </h2>
 
-      <div className="grid sm:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
         <FormInput
           name="f_name"
           label="First Name"
@@ -99,7 +103,7 @@ const AddUser = ({ onAddUser }: AddUserProps) => {
           name="email"
           type="email"
           label="Email"
-          placeholder="john@example.com"
+          placeholder="john@gmail.com"
           value={newUserForm.email}
           onChange={handleChange}
           required
@@ -107,12 +111,7 @@ const AddUser = ({ onAddUser }: AddUserProps) => {
       </div>
 
       <div>
-        <button
-          type="submit"
-          className="w-full py-3 px-6 font-semibold text-white bg-amber-600 hover:bg-amber-700 rounded-xl transition shadow hover:shadow-md"
-        >
-          Add User
-        </button>
+        <Button type="submit" className="w-full">Add User</Button>
       </div>
     </form>
   );
