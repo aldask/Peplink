@@ -26,17 +26,17 @@ const UsersPage = () => {
           Users
         </h1>
 
-        <div className="text-center mb-10 space-x-4">
+        <div className="mb-10 flex flex-col items-center space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4 sm:justify-center">
           <button
             onClick={() => setShowModal(true)}
-            className="inline-block text-white bg-amber-600 hover:bg-amber-700 rounded-lg font-medium px-6 py-2 shadow-md transition"
+            className="cursor-pointer w-[80%] sm:w-auto text-white bg-amber-600 hover:bg-amber-700 rounded-lg font-medium px-6 py-2 shadow-md transition text-center"
           >
             Add User
           </button>
 
-          <span className="inline-block">
+          <div className="w-[80%] sm:w-auto">
             <UsersSortion sortOption={sortOption} onChange={setSortOption} />
-          </span>
+          </div>
         </div>
 
         <UsersList users={sortedUsers} onDeleteUser={handleDeleteUser} />
