@@ -8,7 +8,7 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
       <div className="absolute inset-0 bg-black opacity-40" onClick={onClose} />
 
       <div
-        onClick={(e) => e.preventDefault()}
+        onClick={(e) => e.stopPropagation()}
         className="relative z-10 bg-white rounded-2xl shadow-2xl p-8 sm:p-10 w-full max-w-2xl mx-4 animate-fadeIn"
       >
         <button
