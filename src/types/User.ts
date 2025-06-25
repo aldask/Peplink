@@ -39,3 +39,8 @@ export interface UserSortionProps {
   sortOption: string;
   onChange: (value: string) => void;
 }
+
+export interface ChuckResponse {
+  value: string;
+  icon_url: string;
+}
