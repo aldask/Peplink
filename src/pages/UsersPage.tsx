@@ -1,39 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import UsersList from "../components/UsersList";
 import Modal from "../components/Modal";
 import AddUser from "../components/AddUser";
-import type { User } from "../types/User";
-import { InitialUsers } from "../utils/InitialUsers";
-import {
-  addUserToLocalStorage,
-  deleteUserFromLocalStorage,
-  getUsersFromLocalStorage,
-} from "../utils/LocalStorageLogic";
+import UsersSortion from "../components/UsersSortion";
+import { usingUsers } from "../hooks/usingUsers";
 
 const UsersPage = () => {
-  const [users, setUsers] = useState<User[]>([]);
   const [showModal, setShowModal] = useState(false);
-
-  useEffect(() => {
-    const storedUsers = getUsersFromLocalStorage();
-    if (storedUsers.length === 0) {
-      addUserToLocalStorage(InitialUsers);
-      setUsers(InitialUsers);
-    } else {
-      setUsers(storedUsers);
-    }
-  }, []);
-
-  const handleAddUser = (newUser: User) => {
-    addUserToLocalStorage([newUser]);
-    setUsers(getUsersFromLocalStorage());
-    setShowModal(false);
-  };
-
-  const handleDeleteUser = (id: number) => {
-    deleteUserFromLocalStorage(id);
-    setUsers(getUsersFromLocalStorage());
-  };
+  const {
+    sortedUsers,
+    sortOption,
+    setSortOption,
+    handleAddUser,
+    handleDeleteUser,
+  } = usingUsers();
 
   return (
     <>
@@ -46,20 +26,29 @@ const UsersPage = () => {
           Users
         </h1>
 
-        <div className="text-center mb-10">
+        <div className="mb-10 flex flex-col items-center space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4 sm:justify-center">
           <button
             onClick={() => setShowModal(true)}
-            className="text-white bg-amber-600 hover:bg-amber-700 rounded-lg transition font-medium px-6 py-2 transition"
+            className="cursor-pointer w-[80%] sm:w-auto text-white bg-amber-600 hover:bg-amber-700 rounded-lg font-medium px-6 py-2 shadow-md transition text-center"
           >
             Add User
           </button>
+
+          <div className="w-[80%] sm:w-auto">
+            <UsersSortion sortOption={sortOption} onChange={setSortOption} />
+          </div>
         </div>
 
-        <UsersList users={users} onDeleteUser={handleDeleteUser} />
+        <UsersList users={sortedUsers} onDeleteUser={handleDeleteUser} />
       </div>
 
       <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
-        <AddUser onAddUser={handleAddUser} />
+        <AddUser
+          onAddUser={(user) => {
+            handleAddUser(user);
+            setShowModal(false);
+          }}
+        />
       </Modal>
     </>
   );
