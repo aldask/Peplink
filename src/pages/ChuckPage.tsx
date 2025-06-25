@@ -2,7 +2,7 @@ import useChuck from "../hooks/useChuck";
 import { useNavigate } from "react-router-dom";
 
 const ChuckPage = () => {
-  const { chuckSays, lastFetched, fetchChuckPhrase } = useChuck();
+  const { chuckSays, lastFetched } = useChuck();
   const navigate = useNavigate();
 
   return (
@@ -32,12 +32,6 @@ const ChuckPage = () => {
             Last updated: {lastFetched.toLocaleString()}
           </p>
         )}
-        <button
-          onClick={fetchChuckPhrase}
-          className="flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-semibold px-5 py-2.5 rounded-3xl shadow-md transition-transform duration-300 transform hover:scale-105 active:scale-95 text-sm sm:text-base"
-        >
-          ↻ New Quote
-        </button>
       </div>
     </div>
   );

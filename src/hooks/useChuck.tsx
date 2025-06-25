@@ -27,7 +27,6 @@ const useChuck = () => {
   return {
     chuckSays,
     lastFetched,
-    fetchChuckPhrase,
   };
 };
 
