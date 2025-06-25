@@ -1,4 +1,4 @@
-import type { ModalProps } from "../types/User";
+import type { ModalProps } from "../types/Other";
 
 const Modal = ({ isOpen, onClose, children }: ModalProps) => {
   if (!isOpen) return null;

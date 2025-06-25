@@ -1,10 +1,9 @@
 import { useState } from "react";
-import UsersList from "../components/UsersList";
+import UsersList from "../components/Users/UsersList";
 import Modal from "../components/Modal";
-import AddUser from "../components/AddUser";
-import UsersSortion from "../components/UsersSortion";
-import { usingUsers } from "../hooks/usingUsers";
-import { useNavigate } from "react-router-dom";
+import AddUser from "../components/Users/AddUser";
+import { usingUsers } from "../hooks/useUsers";
+import Navbar from "../components/Navbar/Navbar";
 
 const UsersPage = () => {
   const [showModal, setShowModal] = useState(false);
@@ -16,34 +15,26 @@ const UsersPage = () => {
     handleDeleteUser,
   } = usingUsers();
 
-  const navigate = useNavigate();
-
   return (
     <>
+      <Navbar
+        onAddClick={() => setShowModal(true)}
+        sortOption={sortOption}
+        onSortChange={setSortOption}
+      />
+
       <div
-        className={`transition-opacity duration-300 max-w-5xl mx-auto px-4 py-12 ${
+        className={`pt-24 transition-opacity duration-300 max-w-5xl mx-auto px-4 sm:px-6 ${
           showModal ? "opacity-50 pointer-events-none" : ""
         }`}
       >
-        <h1 className="text-3xl sm:text-5xl font-extrabold text-center mb-10 sm:mb-14 text-gray-800 tracking-tight drop-shadow-sm">
-          User Management
-        </h1>
-        <div className="mb-10 sm:mb-14 flex flex-col items-center space-y-3 sm:flex-row sm:space-y-0 sm:space-x-6 sm:justify-center">
-          <button
-            onClick={() => setShowModal(true)}
-            className="w-full sm:w-auto bg-amber-600 hover:bg-amber-700 text-white font-medium sm:font-semibold text-sm sm:text-base px-6 py-2.5 sm:px-7 sm:py-3 rounded-2xl shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1 active:scale-95"
-          >
-            Add User
-          </button>
-          <div className="w-full sm:w-auto">
-            <UsersSortion sortOption={sortOption} onChange={setSortOption} />
-          </div>
-          <button
-            onClick={() => navigate("/chuck")}
-            className="w-full sm:w-auto bg-amber-600 hover:bg-amber-700 text-white font-medium sm:font-semibold text-sm sm:text-base px-6 py-2.5 sm:px-7 sm:py-3 rounded-2xl shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1 active:scale-95"
-          >
-            Go to Chuck Norris
-          </button>
+        <div className="text-center mb-10 sm:mb-14">
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-gray-800 tracking-tight drop-shadow-sm">
+            User Management
+          </h1>
+          <p className="mt-4 text-base sm:text-lg text-gray-600">
+            Manage your users efficiently with our intuitive interface.
+          </p>
         </div>
         <div className="max-w-4xl mx-auto">
           <UsersList users={sortedUsers} onDeleteUser={handleDeleteUser} />

@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import UsersPage from "./pages/UsersPage";
 import ChuckPage from "./pages/ChuckPage";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
         <Route path="/" element={<UsersPage />} />
         <Route path="/chuck" element={<ChuckPage />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

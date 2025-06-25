@@ -1,5 +1,3 @@
-import type { ReactNode } from "react";
-
 export interface User {
   id: number;
   f_name: string;
@@ -8,6 +6,11 @@ export interface User {
   age: number;
   role: string;
   email: string;
+}
+
+export interface UsersListProps {
+  users: User[];
+  onDeleteUser: (id: number) => void;
 }
 
 export interface UserCardProps {
@@ -19,28 +22,7 @@ export interface AddUserProps {
   onAddUser: (user: User) => void;
 }
 
-export interface ModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  children: ReactNode;
-}
-
-export interface FormSelectProps
-  extends React.SelectHTMLAttributes<HTMLSelectElement> {
-  label?: string;
-}
-
-export interface FormInputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
-  label?: string;
-}
-
-export interface UserSortionProps {
+export interface UserSortingProps {
   sortOption: string;
   onChange: (value: string) => void;
-}
-
-export interface ChuckResponse {
-  value: string;
-  icon_url: string;
 }
