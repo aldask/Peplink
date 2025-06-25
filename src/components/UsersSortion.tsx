@@ -5,7 +5,7 @@ const UsersSortion = ({ sortOption, onChange }: UserSortionProps) => {
     <select
       value={sortOption}
       onChange={(e) => onChange(e.target.value)}
-      className="sm:text-left text-center cursor-pointer w-full text-white bg-amber-600 hover:bg-amber-700 rounded-lg font-medium px-6 py-2 shadow-md transition pointer"
+      className="sm:text-left text-center w-full sm:w-auto bg-amber-600 hover:bg-amber-700 text-white font-semibold px-6 py-3 rounded-2xl shadow-md hover:shadow-lg transition duration-300 cursor-pointer text-sm sm:text-base"
     >
       <option value="asc">Sort by Name (A-Z)</option>
       <option value="desc">Sort by Name (Z-A)</option>

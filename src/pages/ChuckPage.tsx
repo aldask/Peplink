@@ -6,7 +6,7 @@ const ChuckPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="h-screen flex flex-col justify-center items-center px-4 sm:px-10 box-border overflow-hidden">
+    <div className="min-h-screen flex flex-col justify-center items-center py-12 px-6 sm:px-12 box-border overflow-hidden">
       <div className="relative max-w-3xl w-full bg-white rounded-3xl shadow-xl border border-amber-300 p-6 sm:p-10 flex flex-col items-center">
         <button
           onClick={() => navigate("/")}

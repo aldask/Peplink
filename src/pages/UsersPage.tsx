@@ -21,34 +21,30 @@ const UsersPage = () => {
   return (
     <>
       <div
-        className={`transition-opacity duration-300 max-w-5xl mx-auto ${
+        className={`transition-opacity duration-300 max-w-5xl mx-auto px-4 py-12 ${
           showModal ? "opacity-50 pointer-events-none" : ""
         }`}
       >
-        <h1 className="text-5xl font-extrabold text-center mb-14 text-gray-800 tracking-tight drop-shadow-sm">
+        <h1 className="text-3xl sm:text-5xl font-extrabold text-center mb-10 sm:mb-14 text-gray-800 tracking-tight drop-shadow-sm">
           User Management
         </h1>
-
-        <div className="mb-14 flex flex-col items-center space-y-4 sm:flex-row sm:space-y-0 sm:space-x-6 sm:justify-center">
+        <div className="mb-10 sm:mb-14 flex flex-col items-center space-y-3 sm:flex-row sm:space-y-0 sm:space-x-6 sm:justify-center">
           <button
             onClick={() => setShowModal(true)}
-            className="w-[80%] sm:w-auto bg-amber-600 hover:bg-amber-700 text-white font-semibold px-7 py-3 rounded-2xl shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1 active:scale-95"
+            className="w-full sm:w-auto bg-amber-600 hover:bg-amber-700 text-white font-medium sm:font-semibold text-sm sm:text-base px-6 py-2.5 sm:px-7 sm:py-3 rounded-2xl shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1 active:scale-95"
           >
             Add User
           </button>
-
-          <div className="w-[80%] sm:w-auto">
+          <div className="w-full sm:w-auto">
             <UsersSortion sortOption={sortOption} onChange={setSortOption} />
           </div>
-
           <button
             onClick={() => navigate("/chuck")}
-            className="w-[80%] sm:w-auto bg-amber-600 hover:bg-amber-700 text-white font-semibold px-7 py-3 rounded-2xl shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1 active:scale-95"
+            className="w-full sm:w-auto bg-amber-600 hover:bg-amber-700 text-white font-medium sm:font-semibold text-sm sm:text-base px-6 py-2.5 sm:px-7 sm:py-3 rounded-2xl shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1 active:scale-95"
           >
             Go to Chuck Norris
           </button>
         </div>
-
         <div className="max-w-4xl mx-auto">
           <UsersList users={sortedUsers} onDeleteUser={handleDeleteUser} />
         </div>

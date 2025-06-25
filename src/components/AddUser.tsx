@@ -45,12 +45,12 @@ const AddUser = ({ onAddUser }: AddUserProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <h2 className="text-2xl font-bold text-gray-800 border-b pb-2">
+    <form onSubmit={handleSubmit} className="space-y-6 text-sm sm:text-base">
+      <h2 className="text-xl sm:text-2xl font-bold text-gray-800 border-b pb-2">
         Add New User
       </h2>
 
-      <div className="grid sm:grid-cols-2 gap-6">
+      <div className="grid gap-5 sm:grid-cols-2">
         <FormInput
           name="f_name"
           label="First Name"
@@ -99,7 +99,7 @@ const AddUser = ({ onAddUser }: AddUserProps) => {
           name="email"
           type="email"
           label="Email"
-          placeholder="john@example.com"
+          placeholder="john@gmail.com"
           value={newUserForm.email}
           onChange={handleChange}
           required
@@ -109,7 +109,7 @@ const AddUser = ({ onAddUser }: AddUserProps) => {
       <div>
         <button
           type="submit"
-          className="w-full py-3 px-6 font-semibold text-white bg-amber-600 hover:bg-amber-700 rounded-xl transition shadow hover:shadow-md"
+          className="w-full py-3 px-6 font-semibold text-white bg-amber-600 hover:bg-amber-700 rounded-xl transition shadow hover:shadow-md text-sm sm:text-base"
         >
           Add User
         </button>
