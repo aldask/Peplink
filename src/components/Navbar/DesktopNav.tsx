@@ -4,9 +4,9 @@ import type { NavbarProps } from "../../types/Navbar";
 import UsersSorting from "../Users/UsersSorting";
 
 const DesktopNav = ({
-  onAddClick,
   sortOption = "default",
   onSortChange = () => {},
+  onAddClick,
 }: NavbarProps) => {
   const navigate = useNavigate();
 

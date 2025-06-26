@@ -4,10 +4,10 @@ import Button from "../Forms_Buttons/Button";
 import type { NavbarProps } from "../../types/Navbar";
 
 const MobileNav = ({
-  onAddClick,
   sortOption = "default",
   onSortChange = () => {},
   closeMenu,
+  onAddClick,
 }: NavbarProps) => {
   const navigate = useNavigate();
 
@@ -15,7 +15,7 @@ const MobileNav = ({
     <div className="lg:hidden mt-4 px-4 flex flex-col gap-4 max-w-6xl mx-auto animate-fade-in">
       <Button
         onClick={() => {
-          onAddClick();
+          onAddClick?.();
           closeMenu?.();
         }}
       >
