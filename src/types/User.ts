@@ -8,6 +8,11 @@ export interface User {
   email: string;
 }
 
+export interface UsersListProps {
+  users: User[];
+  onDeleteUser: (id: number) => void;
+}
+
 export interface UserFormData {
   f_name: string;
   l_name: string;
@@ -24,11 +29,6 @@ export interface FormErrors {
   age: string;
   role: string;
   email: string;
-}
-
-export interface UsersListProps {
-  users: User[];
-  onDeleteUser: (id: number) => void;
 }
 
 export interface UserCardProps {

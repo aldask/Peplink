@@ -9,7 +9,6 @@ import Button from "../Forms_Buttons/Button";
 const Navbar = ({ onAddClick, sortOption, onSortChange }: NavbarProps) => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
-
   const isOtherPage = location.pathname === "/chuck";
 
   return (
@@ -25,7 +24,6 @@ const Navbar = ({ onAddClick, sortOption, onSortChange }: NavbarProps) => {
             className="sm:h-12 h-8 w-auto cursor-pointer"
           />
         </button>
-
         {isOtherPage ? (
           <div>
             <Button onClick={() => navigate(-1)}>Go Back</Button>
