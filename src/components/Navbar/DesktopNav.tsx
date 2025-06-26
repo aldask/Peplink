@@ -3,11 +3,15 @@ import Button from "../Forms_Buttons/Button";
 import type { NavbarProps } from "../../types/Navbar";
 import UsersSorting from "../Users/UsersSorting";
 
-const DesktopNav = ({ onAddClick, sortOption, onSortChange }: NavbarProps) => {
+const DesktopNav = ({
+  onAddClick,
+  sortOption = "default",
+  onSortChange = () => {},
+}: NavbarProps) => {
   const navigate = useNavigate();
 
   return (
-    <div className="hidden md:flex items-center gap-5">
+    <div className="hidden lg:flex items-center gap-5">
       <Button onClick={onAddClick}>Add User</Button>
       <Button onClick={() => navigate("/chuck")}>Chuck's Wisdom</Button>
       <div className="min-w-[180px]">

@@ -9,11 +9,13 @@ export interface ModalProps {
 export interface FormSelectProps
   extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label?: string;
+  error?: string;
 }
 
 export interface FormInputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
+  error?: string;
 }
 
 export interface ChuckResponse {

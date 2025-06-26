@@ -28,14 +28,15 @@ const UsersPage = () => {
           showModal ? "opacity-50 pointer-events-none" : ""
         }`}
       >
-        <div className="text-center mb-10 sm:mb-14">
+        <div className="text-center py-4 sm:py-6 sm:mb-2">
           <h1 className="text-3xl sm:text-5xl font-extrabold text-gray-800 tracking-tight drop-shadow-sm">
             User Management
           </h1>
-          <p className="mt-4 text-base sm:text-lg text-gray-600">
+          <p className="mt-3 text-base sm:text-lg text-gray-600">
             Manage your users efficiently with our intuitive interface.
           </p>
         </div>
+
         <div className="max-w-4xl mx-auto">
           <UsersList users={sortedUsers} onDeleteUser={handleDeleteUser} />
         </div>
