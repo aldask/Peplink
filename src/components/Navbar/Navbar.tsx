@@ -4,10 +4,13 @@ import logo from "../../assets/logo.png";
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
 import type { NavbarProps } from "../../types/Navbar";
+import Button from "../Forms_Buttons/Button";
 
 const Navbar = ({ onAddClick, sortOption, onSortChange }: NavbarProps) => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+
+  const isOtherPage = location.pathname === "/chuck";
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm px-4 sm:px-12 py-3">
@@ -23,41 +26,51 @@ const Navbar = ({ onAddClick, sortOption, onSortChange }: NavbarProps) => {
           />
         </button>
 
-        <DesktopNav
-          onAddClick={onAddClick}
-          sortOption={sortOption}
-          onSortChange={onSortChange}
-        />
+        {isOtherPage ? (
+          <div>
+            <Button onClick={() => navigate(-1)}>Go Back</Button>
+          </div>
+        ) : (
+          <div className="flex items-center">
+            <DesktopNav
+              onAddClick={onAddClick}
+              sortOption={sortOption}
+              onSortChange={onSortChange}
+            />
 
-        <button
-          className="md:hidden text-2xl text-amber-500 hover:text-amber-600 transition"
-          onClick={() => setIsOpen((prev) => !prev)}
-          aria-label={isOpen ? "Close menu" : "Open menu"}
+            <button
+              className="lg:hidden text-2xl text-amber-500 hover:text-amber-600 transition"
+              onClick={() => setIsOpen((prev) => !prev)}
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+            >
+              <span
+                className={`transition-transform duration-300 ${
+                  isOpen ? "rotate-90 scale-110" : ""
+                }`}
+              >
+                {isOpen ? "✕" : "☰"}
+              </span>
+            </button>
+          </div>
+        )}
+      </div>
+
+      {!isOtherPage && (
+        <div
+          className={`lg:hidden transition-all duration-300 ease-in-out overflow-hidden ${
+            isOpen
+              ? "max-h-[500px] opacity-100 translate-y-0"
+              : "max-h-0 opacity-0 -translate-y-2"
+          }`}
         >
-          <span
-            className={`transition-transform duration-300 ${
-              isOpen ? "rotate-90 scale-110" : ""
-            }`}
-          >
-            {isOpen ? "✕" : "☰"}
-          </span>
-        </button>
-      </div>
-
-      <div
-        className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${
-          isOpen
-            ? "max-h-[500px] opacity-100 translate-y-0"
-            : "max-h-0 opacity-0 -translate-y-2"
-        }`}
-      >
-        <MobileNav
-          onAddClick={onAddClick}
-          sortOption={sortOption}
-          onSortChange={onSortChange}
-          closeMenu={() => setIsOpen(false)}
-        />
-      </div>
+          <MobileNav
+            onAddClick={onAddClick}
+            sortOption={sortOption}
+            onSortChange={onSortChange}
+            closeMenu={() => setIsOpen(false)}
+          />
+        </div>
+      )}
     </nav>
   );
 };
