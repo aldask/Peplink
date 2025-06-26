@@ -1,11 +1,26 @@
 import { useState } from "react";
 import FormInput from "../Forms_Buttons/FormInput";
 import FormSelect from "../Forms_Buttons/FormSelect";
-import type { User, AddUserProps } from "../../types/User";
 import Button from "../Forms_Buttons/Button";
+import type {
+  User,
+  AddUserProps,
+  UserFormData,
+  FormErrors,
+} from "../../types/User";
+import validateUserForm from "../../hooks/validateUserForm";
 
 const AddUser = ({ onAddUser }: AddUserProps) => {
-  const [newUserForm, setNewUserForm] = useState({
+  const [newUserForm, setNewUserForm] = useState<UserFormData>({
+    f_name: "",
+    l_name: "",
+    gender: "",
+    age: "",
+    role: "",
+    email: "",
+  });
+
+  const [errors, setErrors] = useState<FormErrors>({
     f_name: "",
     l_name: "",
     gender: "",
@@ -17,11 +32,27 @@ const AddUser = ({ onAddUser }: AddUserProps) => {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
-    setNewUserForm({ ...newUserForm, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setNewUserForm((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const validationErrors = validateUserForm(newUserForm);
+    setErrors(validationErrors);
+
+    if (
+      validationErrors.f_name !== "" ||
+      validationErrors.l_name !== "" ||
+      validationErrors.gender !== "" ||
+      validationErrors.age !== "" ||
+      validationErrors.role !== "" ||
+      validationErrors.email !== ""
+    ) {
+      return;
+    }
 
     const newUser: User = {
       id: Date.now(),
@@ -36,6 +67,15 @@ const AddUser = ({ onAddUser }: AddUserProps) => {
     onAddUser(newUser);
 
     setNewUserForm({
+      f_name: "",
+      l_name: "",
+      gender: "",
+      age: "",
+      role: "",
+      email: "",
+    });
+
+    setErrors({
       f_name: "",
       l_name: "",
       gender: "",
@@ -61,6 +101,7 @@ const AddUser = ({ onAddUser }: AddUserProps) => {
           placeholder="John"
           value={newUserForm.f_name}
           onChange={handleChange}
+          error={errors.f_name}
           required
         />
         <FormInput
@@ -69,6 +110,7 @@ const AddUser = ({ onAddUser }: AddUserProps) => {
           placeholder="Doe"
           value={newUserForm.l_name}
           onChange={handleChange}
+          error={errors.l_name}
           required
         />
         <FormSelect
@@ -76,6 +118,7 @@ const AddUser = ({ onAddUser }: AddUserProps) => {
           label="Gender"
           value={newUserForm.gender}
           onChange={handleChange}
+          error={errors.gender}
           required
         >
           <option value="">Select Gender</option>
@@ -89,6 +132,7 @@ const AddUser = ({ onAddUser }: AddUserProps) => {
           placeholder="30"
           value={newUserForm.age}
           onChange={handleChange}
+          error={errors.age}
           required
         />
         <FormInput
@@ -97,6 +141,7 @@ const AddUser = ({ onAddUser }: AddUserProps) => {
           placeholder="Developer"
           value={newUserForm.role}
           onChange={handleChange}
+          error={errors.role}
           required
         />
         <FormInput
@@ -106,12 +151,15 @@ const AddUser = ({ onAddUser }: AddUserProps) => {
           placeholder="john@gmail.com"
           value={newUserForm.email}
           onChange={handleChange}
+          error={errors.email}
           required
         />
       </div>
 
       <div>
-        <Button type="submit" className="w-full">Add User</Button>
+        <Button type="submit" className="w-full">
+          Add User
+        </Button>
       </div>
     </form>
   );
