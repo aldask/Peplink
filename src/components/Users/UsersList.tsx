@@ -4,7 +4,7 @@ import UserCard from "./UserCard";
 const UsersList = ({ users, onDeleteUser }: UsersListProps) => {
   return (
     <section className="max-w-5xl mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold text-neutral-800 mb-10 text-center">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-neutral-800 mb-10 text-center">
         User Profiles
       </h1>
       {users.length === 0 ? (

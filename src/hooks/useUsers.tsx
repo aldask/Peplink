@@ -9,7 +9,7 @@ import {
 
 export const usingUsers = () => {
   const [users, setUsers] = useState<User[]>([]);
-  const [sortOption, setSortOption] = useState("asc");
+  const [sortOption, setSortOption] = useState("default");
 
   useEffect(() => {
     const storedUsers = getUsersFromLocalStorage();
@@ -33,14 +33,18 @@ export const usingUsers = () => {
 
   const sortedUsers = [...users].sort((a, b) => {
     switch (sortOption) {
-      case "asc":
+      case "a_z":
         return a.f_name.localeCompare(b.f_name);
-      case "desc":
+      case "z_a":
         return b.f_name.localeCompare(a.f_name);
-      case "newest":
+      case "from_newest":
         return b.id - a.id;
-      case "oldest":
+      case "from_oldest":
         return a.id - b.id;
+      case "oldest_to_youngest":
+        return a.age - b.age;
+      case "youngest_to_oldest":
+        return b.age - a.age;
       default:
         return 0;
     }

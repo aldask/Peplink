@@ -5,14 +5,14 @@ import type { NavbarProps } from "../../types/Navbar";
 
 const MobileNav = ({
   onAddClick,
-  sortOption,
-  onSortChange,
+  sortOption = "default",
+  onSortChange = () => {},
   closeMenu,
 }: NavbarProps) => {
   const navigate = useNavigate();
 
   return (
-    <div className="md:hidden mt-4 px-4 flex flex-col gap-4 max-w-6xl mx-auto animate-fade-in">
+    <div className="lg:hidden mt-4 px-4 flex flex-col gap-4 max-w-6xl mx-auto animate-fade-in">
       <Button
         onClick={() => {
           onAddClick();

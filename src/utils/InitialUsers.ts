@@ -12,7 +12,7 @@ export const InitialUsers: User[] = [
   },
   {
     id: Date.now() + 1,
-    f_name: "Janė",
+    f_name: "Jane",
     l_name: "Janauske",
     email: "jane.janauske@mail.com",
     age: 25,
