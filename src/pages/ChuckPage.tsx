@@ -9,7 +9,7 @@ const ChuckPage = () => {
   return (
     <>
       <Navbar onAddClick={() => navigate("/")} />
-      <div className="min-h-[90vh] flex flex-col justify-center items-center overflow-hidden">
+      <div className="min-h-[90vh] flex flex-col pt-12 justify-center items-center overflow-hidden">
         <div className="relative max-w-3xl w-full bg-white rounded-3xl shadow-xl border border-amber-400 p-6 sm:p-10 flex flex-col items-center">
           <div className="flex flex-col sm:flex-row sm:items-center sm:gap-6 gap-4 text-center sm:text-left mb-8 mt-4 w-full justify-center">
             <img
