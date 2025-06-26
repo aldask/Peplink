@@ -42,9 +42,9 @@ export const usingUsers = () => {
       case "from_oldest":
         return a.id - b.id;
       case "oldest_to_youngest":
-        return a.age - b.age;
-      case "youngest_to_oldest":
         return b.age - a.age;
+      case "youngest_to_oldest":
+        return a.age - b.age;
       default:
         return 0;
     }
