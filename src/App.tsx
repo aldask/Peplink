@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Modal from "./components/Modal";
 import AddUser from "./components/Users/AddUser";
 import { usingUsers } from "./hooks/useUsers";
+import PageNotFound from "./pages/PageNotFound";
 
 function App() {
   const {
@@ -35,6 +36,7 @@ function App() {
             }
           />
           <Route path="/chuck" element={<ChuckPage />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </main>
       <Footer />
